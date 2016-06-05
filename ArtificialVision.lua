@@ -1,5 +1,5 @@
 -- ARTIFICIAL VISION
--- Real ward´s vision camp.
+-- Real wardÂ´s vision camp.
 -- Version 1.00
 -- Best of fun and vision, Whitex22.
 
@@ -14,7 +14,7 @@ Config:addParam("enabled", "Enabled", SCRIPT_PARAM_ONOFF, true)
 Config:addSubMenu("Draws Settings","Draws")
 Config.Draws:addParam("draw", "Draw wards", SCRIPT_PARAM_ONOFF, true)
 Config.Draws:addParam("drawMinimap", "Draw in minimap", SCRIPT_PARAM_ONOFF, true)
-Config.Draws:addParam("qualityMultiplier", "Vision Quality",SCRIPT_PARAM_SLICE, 0.3,0.1,1,1,nil,false)
+Config.Draws:addParam("qualityMultiplier", "Vision Quality",SCRIPT_PARAM_SLICE, 3,1,10,0)
 
 function PrintMessage(message) print("<font color=\"#339999\"><b>Artificial Vision:</font> </b><font color=\"#FFFFFF\">" .. message) end
 
@@ -27,7 +27,7 @@ function GetDrawPoints(index)
 	local i = 1
 	local wardVector = Vector(wards[index][1],wards[index][2],wards[index][3])
 	local alpha = 0
-	local value = Config.Draws.qualityMultiplier * 10 
+	local value = Config.Draws.qualityMultiplier 
 	while(i <= 36 * value) do
 		alpha = alpha + 360 / 36 / value
 		wards[index][4+i] = {}
