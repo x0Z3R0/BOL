@@ -51,7 +51,7 @@ end
 function CreateWard(object) 
 	if(Config.enabled)then
 		if object and(object.name:lower():find("visionward") or object.name:lower():find("sightward")) and object.networkID ~= 0 then
-			if not object.team ~= myHero.team then
+			if object.team ~= myHero.team then
 				i = 1
 				while i < wardNumber do
 					if(wards[i])then
