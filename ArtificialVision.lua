@@ -1,9 +1,9 @@
 -- ARTIFICIAL VISION
--- Real wardÂ´s vision camp.
+-- Real ward´s vision camp.
 -- Version 1.00
 -- Best of fun and vision, Whitex22.
 
-local version = 1.00
+local version = 1.01
 local sEnemies = GetEnemyHeroes()
 local sAllies = GetAllyHeroes()
 local wards = {}
@@ -14,7 +14,7 @@ Config:addParam("enabled", "Enabled", SCRIPT_PARAM_ONOFF, true)
 Config:addSubMenu("Draws Settings","Draws")
 Config.Draws:addParam("draw", "Draw wards", SCRIPT_PARAM_ONOFF, true)
 Config.Draws:addParam("drawMinimap", "Draw in minimap", SCRIPT_PARAM_ONOFF, true)
-Config.Draws:addParam("qualityMultiplier", "Vision Quality",SCRIPT_PARAM_SLICE, 3,1,10,0)
+Config.Draws:addParam("qualityMultiplier", "Vision Quality",SCRIPT_PARAM_SLICE, 3,0,10,0)
 
 function PrintMessage(message) print("<font color=\"#339999\"><b>Artificial Vision:</font> </b><font color=\"#FFFFFF\">" .. message) end
 
@@ -27,7 +27,7 @@ function GetDrawPoints(index)
 	local i = 1
 	local wardVector = Vector(wards[index][1],wards[index][2],wards[index][3])
 	local alpha = 0
-	local value = Config.Draws.qualityMultiplier 
+	local value = Config.Draws.qualityMultiplier
 	while(i <= 36 * value) do
 		alpha = alpha + 360 / 36 / value
 		wards[index][4+i] = {}
@@ -51,7 +51,7 @@ end
 function CreateWard(object) 
 	if(Config.enabled)then
 		if object and(object.name:lower():find("visionward") or object.name:lower():find("sightward")) and object.networkID ~= 0 then
-			if not object.team == myHero.team then
+			if not object.team ~= myHero.team then
 				i = 1
 				while i < wardNumber do
 					if(wards[i])then
