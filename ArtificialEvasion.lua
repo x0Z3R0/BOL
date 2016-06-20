@@ -279,8 +279,8 @@ end
 function AutoUpdater()
 	_version = GetWebResult("raw.github.com", "https://raw.githubusercontent.com/x0Z3R0/BOL/master/ArtificialEvasion.version")
 	if(tonumber(_version) > version) then 
-		Print("Downloading last version " .. _version)
-		text = GetWebResult("raw.github.com", "https://raw.githubusercontent.com/x0Z3R0/BOL/master/ArtificialEvasion.lua")
+		Print("Downloading last version " .. _version .. " . Dont press F9 till update is done.")
+		DelayAction(function() DownloadFile(https://raw.githubusercontent.com/x0Z3R0/BOL/master/ArtificialEvasion.lua, SCRIPT_PATH.. "ArtificialEvasion.lua", function () Print("Successfully updated to ".. _version.." press F9 twice to reload.") end) end, 3)
 	else
 		Print("You have the last version " .. version)
 	end
